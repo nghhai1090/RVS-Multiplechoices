@@ -1,8 +1,8 @@
 
 public class FirstKap extends Kapitel {
 
-	public FirstKap() {
-		super();
+	public FirstKap(boolean s) {
+		super(s);
         Inhalt i = new Inhalt ("Struktur des Internet","Struktur Internet","T");
         i.addAnswer("EndSysteme");
         i.addAnswer("Übertragungsmedien");
@@ -205,7 +205,7 @@ public class FirstKap extends Kapitel {
         i30.addAnswer("keine Nutzungskonkurenz durch andere Verbindungen");
         i30.addAnswer("von der Leitung abhängige aber garantierte Leistung");
         i30.addAnswer("zustand der Verbindung an jedem Transferknoten gespeichert");
-        i30.addWrong("Netz Resourcen wird aufgeteilt und die teile werden einzelnen Verbindungen zugeteilt, unbenutzter Teil wird nicht durch andere Verbindungen genutzt");
+        i30.addAnswer("Netz Resourcen wird aufgeteilt und die teile werden einzelnen Verbindungen zugeteilt, unbenutzter Teil wird nicht durch andere Verbindungen genutzt");
         i30.addAnswer("Bsp: telefon, Video Konferenz");
         i30.addAnswer("Ideal für zeitkritische Anwendungen");
         i30.addAnswer("Verschwendung von Resourcen möglich");
@@ -226,11 +226,13 @@ public class FirstKap extends Kapitel {
         i31.addWrong("von der Leitung abhängige aber garantierte Leistung");
         i31.addWrong("zustand der Verbindung an jedem Transferknoten gespeichert");
         i31.addWrong("Netz Resourcen wird aufgeteilt und die teile werden einzelnen Verbindungen zugeteilt, unbenutzter Teil wird durch andere Verbindungen genutzt");
-        i31.addAnswer("Netz Resourcen wird aufgeteilt und die teile werden einzelnen Verbindungen zugeteilt, unbenutzter Teil wird nicht durch andere Verbindungen genutzt");
+        i31.addWrong("Netz Resourcen wird aufgeteilt und die teile werden einzelnen Verbindungen zugeteilt, unbenutzter Teil wird nicht durch andere Verbindungen genutzt");
         i31.addWrong("Aufteilung durch Frequenzmultiplexing (FDMA) oder Zeitmultiplexing (TDMA)");
         i31.addAnswer("Multiplexing (Statisch)");
         i31.addAnswer("efferziente Nutzung der vorhandene Resourcen");
         i31.addAnswer("Überlastung möglich");
+        i31.addAnswer("Wartenschlagen Aufenhalt");
+        i31.addAnswer("Übertragungsverzögerung (Packetlänge und Übertragungsrate)");
         i31.addAnswer("Bsp World Wide Web");
         i31.addAnswer("Ideal für nicht zeitkritische Anwendungen");
         i31.addAnswer("Daten in Packete teilen , Packet nutzt volle Bandbreite");
@@ -264,7 +266,7 @@ public class FirstKap extends Kapitel {
         Inhalt i37 = new Inhalt("Routing in Virtual Circuit-Netz","Virtual Circuit-Netz","T");
         i37.addWrong("Ziel Adresse bestimmt den nächsten Hop");
         i37.addWrong("Verschiedene Pakete desselben Datenstroms können unterschiedliche Wege nehmen");
-        i37.addAnswer("jedes Pakete hat eine Tag, die den nächsten Hop bestimmt");
+        i37.addAnswer("jedes Pakete hat einen Tag, die den nächsten Hop bestimmt");
         i37.addAnswer("Pfad wird beim Verbindungsaufbau festgelegt und Router speichern Verbindungsdaten");
         addInhalt(i37);
         Inhalt i38 = new Inhalt("TCP","TCP","T");

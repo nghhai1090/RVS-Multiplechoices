@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 
-public class Multiplechoices implements Frage {
+public class Multiplechoices {
 	private Inhalt i;
 	private InhaltMenge m;
 	private int numwrongchoices;
@@ -39,7 +39,6 @@ public class Multiplechoices implements Frage {
     	richtig.addAll(falsch);
     	return richtig;
     }
-    @Override
     public boolean check(ArrayList<Integer> choices) {// check if answer right
     	if( choices.size()!=i.getAnswer().size()) {this.c=false;return false;}
     	for(int j=0; j< choices.size();j++) {
@@ -50,19 +49,4 @@ public class Multiplechoices implements Frage {
     }
     public boolean getCheck() {return c;}
     public Inhalt getInhalt() {return i;}
-	@Override
-	public boolean isMultiplechoices() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	@Override
-	public boolean isErgaenz() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public boolean check(ArrayList<String> l1, ArrayList<String> l2) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

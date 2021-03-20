@@ -22,10 +22,12 @@ public class Kapitel {
 	private ArrayList<String> wronganswers= new ArrayList<String>();
 	private int numright=0;
 	private int seite=0;
+	private boolean showanswer;
 	private Container cw;
-	public Kapitel() {
+	public Kapitel(boolean s) {
 		window.setTitle("MultipleChoices");
     	cw= window.getContentPane();    	
+    	showanswer=s;
     	cw.setLayout(new GridLayout(1,1));
     	window.setLocationRelativeTo(null);
     	window.setResizable(true);
@@ -38,20 +40,7 @@ public class Kapitel {
 	public InhaltMenge getIMenge() {return m;}
     public void setFrage() {
     	ArrayList<Inhalt> inhalts= m.getInhalts();
-    	//HashMap<Inhalt,Inhalt> k= m.getKonkurenz();
     	Random r = new Random();
-    	//int e= r.nextInt(k.size());
-    	//for(Inhalt i: k.keySet()) {
-    		//if(e==0) {break;}
-    		//else {
-    			//Ergaenz er = new Ergaenz(i, k.get(i));
-    			//fragelist.add(er);
-    			//inhalts.remove(i);
-    			//inhalts.remove(k.get(i));
-        		//k.remove(i);
-        		//e--;
-    		//}
-    	//}
     	for(int j=0;j<inhalts.size();j++) {
     		Multiplechoices mul= new Multiplechoices(inhalts.get(j),m,r.nextInt(3));
     		fragelist.add(mul);
@@ -97,14 +86,42 @@ public class Kapitel {
     			m.check(ans);
     			if(m.getCheck()) {numright++;}
     			else {wronganswers.add(m.getInhalt().getThema());}
-    			setSeite();
-    			if(getSeite()<fragelist.size()) {show(getSeite());}
-    			else {sumary();}
+    			if(showanswer) {loesung(m);}
+    			else {
+    				setSeite();
+        			if(getSeite()<fragelist.size()) {show(getSeite());}
+        			else {sumary();}
+    			}
     		}
     	});
     	cw.add(ok);
     	cw.setLayout(new GridLayout(list.length+2,1));
     	window.setSize(600,list.length*80);
+    	window.setVisible(true);
+    }
+    public void loesung(Multiplechoices m) {
+    	window.setVisible(false);
+    	cw.removeAll();
+    	Inhalt i= m.getInhalt();
+    	JLabel t = new JLabel(i.getTitle());
+    	String la="<html>";
+    	for(int j=0; j< i.getAnswer().size();j++) {la=la+ i.getAnswer().get(j)+"<br>";}
+    	JLabel a= new JLabel(la);
+    	JButton ok = new JButton("OK");
+    	ok.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+    			setSeite();
+    			if(getSeite()<fragelist.size()) {show(getSeite());}
+    			else {sumary();}
+				
+			}
+    	});
+    	cw.setLayout(new BorderLayout());
+    	cw.add(t,BorderLayout.NORTH);
+    	cw.add(a,BorderLayout.CENTER);
+    	cw.add(ok,BorderLayout.SOUTH);
+    	//window.setSize(600,i.getAnswer().size()*20);
     	window.setVisible(true);
     }
     public void sumary() {
